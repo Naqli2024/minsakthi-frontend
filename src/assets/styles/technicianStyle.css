@@ -1,0 +1,1046 @@
+/*********** Technician Home *************/
+.tech-top-content {
+  background-color: #f2fafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 60px 80px;
+}
+.tech-left-content {
+  flex: 1 1 400px;
+  padding: 20px;
+}
+.tech-left-content h1 {
+  font-size: 45px !important;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.tech-left-content h1 span {
+  color: #2fb972;
+  font-size: 45px !important;
+}
+.tech-right-content {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tech-right-content img {
+  max-width: 100%;
+  height: 100%;
+  max-height: 330px;
+  object-fit: contain;
+}
+.tech-signup-btn,
+.tech-login-btn {
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+.tech-signup-btn {
+  background-color: #4dc989;
+  color: #fff;
+}
+.tech-signup-btn:hover {
+  background-color: #38b773;
+}
+.tech-login-btn {
+  border: 1px solid #37e48b;
+  background-color: #fff;
+  color: #2fb972;
+}
+.tech-login-btn:hover {
+  background-color: #e8f8ee;
+}
+.tech-partner-with-us-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px !important;
+  margin: 40px 0 30px;
+}
+.tech-bottom-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin: 40px 80px;
+}
+.tech-bottom-card {
+  max-width: 360px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  text-align: start;
+}
+.tech-bottom-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.tech-box-icon {
+  background-color: #c3eccf;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 50%;
+  text-align: start;
+}
+@media (min-width: 1450px) {
+  .tech-top-content {
+    padding: 80px 120px;
+  }
+  .tech-left-content h1 {
+    font-size: 55px !important;
+  }
+  .tech-bottom-content {
+    margin: 40px 100px;
+  }
+}
+@media (max-width: 1024px) {
+  .tech-top-content {
+    flex-wrap: wrap;
+    padding: 50px 40px;
+    justify-content: center;
+    text-align: center;
+  }
+  .tech-left-content,
+  .tech-right-content {
+    flex: 1 1 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .tech-right-content img {
+    width: 80%;
+    margin-top: 20px;
+  }
+  .tech-signup-btn,
+  .tech-login-btn {
+    margin: 0 auto;
+  }
+  .tech-bottom-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .tech-top-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .tech-left-content h1 {
+    font-size: 30px !important;
+  }
+  .tech-left-content p {
+    font-size: 16px !important;
+  }
+  .tech-signup-btn,
+  .tech-login-btn {
+    width: 100%;
+  }
+  .tech-partner-with-us-text {
+    font-size: 24px !important;
+    margin: 25px 0;
+  }
+  .tech-bottom-content {
+    flex-direction: column;
+    margin: 20px;
+  }
+  .tech-bottom-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 480px) {
+  .tech-left-content h1 {
+    font-size: 26px !important;
+  }
+  .tech-left-content p {
+    font-size: 14px !important;
+  }
+  .tech-partner-with-us-text {
+    font-size: 20px !important;
+  }
+  .tech-bottom-card {
+    padding: 20px;
+  }
+  .tech-box-icon {
+    padding: 12px;
+  }
+}
+/*********** Technician Signup *************/
+.tech-join-us-top-content {
+  background-color: #2fb972;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
+}
+.tech-join-us-card {
+  position: absolute;
+  top: 25%;
+  background-color: white;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 550px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.render-signup-step-content {
+  height: 100%;
+  max-height: 340px;
+  overflow-y: auto;
+}
+.tech-signup-btns {
+  background-color: #2fb972;
+  color: white;
+  padding: 7px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+.tech-signup-btns:hover {
+  background-color: #62cb93;
+}
+.tech-verify-otp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 20px;
+}
+.tech-verify-otp h1 {
+  font-weight: bolder;
+  font-size: 18px !important;
+}
+.tech-verify-otp p {
+  color: #cccccc;
+  text-align: center;
+}
+.tech-verify-otp .tech-verify-otp-btn {
+  background-color: #2fb972;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  width: 80%;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.tech-verify-otp .tech-verify-otp-btn:hover {
+  background-color: #28a968;
+}
+.tech-new-user-text {
+  color: #8b919c;
+  text-align: center;
+  font-size: 12px !important;
+  margin-top: 15px;
+}
+.tech-otp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tech-otp-boxes {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.tech-otp-input {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #27ae60;
+  border-radius: 8px;
+  font-size: 24px;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.tech-otp-input:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.6);
+}
+.tech-otp-timer {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-top: 5px;
+}
+.tech-resend-btn {
+  background: none;
+  border: none;
+  color: #27ae60;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .tech-join-us-card {
+    height: 100%;
+    max-height: 100%;
+  }
+}
+/*********** Technician Login *************/
+.tech-login-img img {
+  height: 100%;
+  max-height: 870px;
+  width: 100%;
+  max-width: 1100px;
+  object-fit: fill;
+  position: relative;
+}
+.tech-login-form-card {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  border: 1px solid #d7d7d7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.tech-login-form-card h1 {
+  font-weight: bolder;
+  font-size: 18px !important;
+  margin-top: 30px;
+}
+.tech-login-form-card p {
+  color: #cccccc;
+  text-align: center;
+}
+.tech-login-form-card .forgot-pwd-text {
+  color: #2fb972;
+  font-size: 12px !important;
+  margin-left: auto;
+  margin-right: 60px;
+  cursor: pointer;
+}
+.tech-login-screen-btn {
+  background-color: #2fb972;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  width: 100%;
+  min-width: 100%;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.tech-login-screen-btn:hover {
+  background-color: #7dcf98;
+}
+.tech-login-flip-card {
+  position: absolute;
+  top: 230px;
+  right: 300px;
+  width: 650px;
+  height: 500px;
+  perspective: 1000px;
+}
+.tech-login-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+}
+.tech-login-flip-card.flipped .tech-login-flip-inner {
+  transform: rotateY(180deg);
+}
+.tech-login-flip-front,
+.tech-login-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.tech-login-flip-back {
+  transform: rotateY(180deg);
+}
+.tech-overall-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1450px) {
+  .tech-login-flip-card {
+    width: 100%;
+    max-width: 550px;
+    height: 100%;
+    max-height: 470px;
+    top: 250px;
+    right: 100px;
+  }
+}
+@media (max-width: 1250px) {
+  .tech-login-overall-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .tech-login-flip-card {
+    width: 550px;
+    height: 470px;
+    position: inherit;
+  }
+}
+@media (max-width: 768px) {
+  .tech-overall-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+  }
+  .tech-login-screen-btn {
+    width: 100%;
+    min-width: 300px;
+    margin-top: 0px;
+  }
+  .tech-login-form-card .forgot-pwd-text {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 550px) {
+  .tech-login-flip-card {
+    width: 300px;
+    height: 700px;
+    position: inherit;
+  }
+  .tech-login-screen-btn {
+    width: 100%;
+    min-width: 100px;
+    padding: 10px 30px;
+    font-size: 12px !important;
+    margin-top: 0px;
+  }
+}
+/*********** Technician Dashboard *************/
+.technician-dashboard-container {
+  padding: 30px;
+}
+.technician-dashboard-header h2 {
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.technician-dashboard-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 50px;
+  margin-top: 10px;
+}
+.technician-dashboard-card {
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: white;
+}
+.technician-dashboard-card-value {
+  font-weight: 600;
+  font-size: 16px !important;
+}
+.technician-dashboard-card-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.technician-dashboard-charts-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 25px;
+}
+.technician-dashboard-chart-card,
+.technician-dashboard-performance-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.technician-dashboard-comp-rate {
+  background-color: #f0fdf4;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.technician-dashboard-resp-rate {
+  background-color: #eff6ff;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.technician-dashboard-performance-score {
+  font-size: 13px !important;
+  font-weight: 700;
+}
+.technician-dashboard-progress-section {
+  margin-top: 20px;
+}
+.technician-dashboard-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, #e5e7eb, #e5e7eb);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.3rem;
+  position: relative;
+}
+.technician-dashboard-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1b9c85, #1b9c85);
+  border-radius: 999px;
+  transition: width 0.6s ease-in-out;
+}
+.technician-dashboard-progress-percent {
+  text-align: right;
+  font-weight: 500;
+  color: #4b5563;
+}
+.technician-dashboard-stars {
+  display: flex;
+  align-items: center;
+}
+.technician-dashboard-total-job {
+  background-color: #007dd6;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-right: 8px;
+}
+.technician-dashboard-active-week {
+  background-color: #05c283;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-right: 8px;
+}
+.technician-dashboard-bottom-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.technician-dashboard-recent-jobs {
+  background: white;
+  border-radius: 1rem;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+.technician-dashboard-recent-jobs table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.technician-dashboard-recent-jobs th {
+  text-align: center;
+  color: black;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px;
+}
+.technician-dashboard-recent-jobs td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 13px !important;
+}
+.technician-dashboard-job-id {
+  color: #2fb972;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.technician-dashboard-status.completed {
+  color: #16a34a;
+  background: #dcfce7;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-status.ongoing {
+  color: #ca8a04;
+  background: #fef9c3;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-status.assigned {
+  color: #4b5563;
+  background: #e5e7eb;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-priority.high {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-priority.medium {
+  background: #fef9c3;
+  color: #ca8a04;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-priority.low {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 5px 0px;
+  border-radius: 20px;
+}
+.technician-dashboard-notifications {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+.technician-dashboard-notifications h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.technician-dashboard-notifications ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+.technician-dashboard-notifications li {
+  font-size: 0.9rem;
+  color: #374151;
+  background-color: #f9fafb;
+  padding: 20px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+.technician-dashboard-notifications li:last-child {
+  border-bottom: none;
+}
+@media (max-width: 900px) {
+  .technician-dashboard-charts-section,
+  .technician-dashboard-bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+/*********** Technician Job Management *************/
+.technician-job-manage-container {
+  padding: 30px;
+}
+.technician-job-manage-container h2 {
+  font-size: 18px !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.technician-job-manage-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+.technician-job-manage-toolbar .form-group {
+  flex: 1 1 250px;
+  min-width: 230px;
+}
+.technician-job-manage-view-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 200px;
+}
+.technician-job-manage-view-btn {
+  border: 1px solid #e5e9f0;
+  color: #2fb972;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.technician-job-manage-view-btn.active {
+  background-color: #2fb972;
+  color: white;
+}
+.technician-job-manage-view-btn:hover {
+  background-color: #2fb972;
+  color: #fff;
+}
+.technician-job-manage-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 25px;
+}
+.technician-job-card-container {
+  height: 100%;
+  min-height: 300px;
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #e5f7ee;
+  border-left: 3px solid #2fb972;
+  border-bottom: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+}
+.technician-job-card-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.technician-job-card-container h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.technician-job-view-details-btn,
+.technician-job-start-job-btn {
+  border: 1px solid #cecece;
+  text-align: center;
+  padding: 6px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.technician-job-view-details-btn {
+  background-color: #fff;
+}
+.technician-job-start-job-btn {
+  background-color: #05c283;
+  color: white;
+  border: none;
+}
+@media (max-width: 1200px) {
+  .technician-job-manage-toolbar {
+    gap: 12px;
+  }
+  .technician-job-manage-view-btn {
+    padding: 7px 16px;
+  }
+}
+@media (max-width: 992px) {
+  .technician-job-manage-container {
+    padding: 20px;
+  }
+  .technician-job-manage-toolbar .form-group {
+    flex: 0;
+  }
+  .technician-job-manage-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .technician-job-manage-view-buttons {
+    justify-content: center;
+  }
+  .technician-job-manage-cards {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .technician-job-manage-container {
+    padding: 15px;
+  }
+  .technician-job-manage-view-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .technician-job-card-container {
+    padding: 15px;
+  }
+  .technician-job-manage-cards {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .technician-job-manage-view-btn {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  .technician-job-card-container h3 {
+    font-size: 14px;
+  }
+  .technician-job-view-details-btn,
+  .technician-job-start-job-btn {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+/*********** Technician Earnings *************/
+.technician-earnings-overall-container {
+  padding: 30px;
+}
+.technician-earnings-overall-container h2 {
+  font-size: 18px !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.technician-earnings-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.technician-earnings-card-container {
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.technician-earnings-card-container:hover {
+  transform: translateY(-4px);
+}
+.technician-earnings-card-container .technician-earnings-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.technician-earnings-card-header .icon {
+  padding: 10px;
+  border-radius: 8px;
+}
+.technician-earnings-card-header .label {
+  font-size: 20px;
+}
+.technician-earnings-card-container h2 {
+  font-size: 24px;
+  margin: 10px 0 4px;
+}
+.technician-earnings-card-container p {
+  color: #666;
+  font-size: 14px;
+}
+.technician-earnings-breakdown {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.technician-earnings-breakdown table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.technician-earnings-breakdown td {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.technician-earnings-payment-history {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+.technician-earnings-job-id {
+  color: #2FB972;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
+.technician-earnings-status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.technician-earnings-status.paid {
+  background-color: #e7f9ed;
+  color: #16a34a;
+}
+@media (max-width: 768px) {
+  .technician-earnings-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .technician-earnings-summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+/*********** Technician Notifications *************/
+.job-management .photo-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #eee;
+  padding: 2px;
+  background: #fff;
+}
+.job-head{
+  font-size: 20px !important;
+}
+.job-complete{
+  background-color: #c4f7d7 !important;
+  color: #218838 !important;
+  font-size: 10px !important;
+}
+@media (max-width: 768px) {
+  .job-management .photo-thumb {
+    width: 80px;
+    height: 80px;
+  }
+  .job-management h3 {
+    font-size: 1.3rem;
+  }
+  .job-management .card-body {
+    padding: 1rem;
+  }
+}
+/*********** Technician Edit Profile *************/
+.tech-profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #DBFCE7;
+  padding: 20px;
+  border-radius: 10px;
+}
+.tech-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+.tech-edit-profile-btn {
+  background-color: #2fb972;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+}
+.tech-profile-container {
+  padding: 20px;
+}
+.tech-profile-active-text {
+  color: #27ae60;
+  font-weight: 500;
+}
+.tech-profile-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+.tech-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.tech-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+.tech-profile-status {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.tech-profile-status.active {
+  background-color: #e6f8ed;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+}
+.tech-profile-action-buttons button {
+  margin-left: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.tech-profile-info-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 25px;
+}
+.tech-profile-card {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.tech-profile-card h5 {
+  font-size: 16px;    
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.tech-profile-info-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 20px;
+}
+.tech-profile-doc-view-btn {
+  display: flex;
+  align-items: center;
+  background-color: #2fb972;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 12px !important;
+}
+@media (max-width: 992px) {
+  .tech-profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .tech-profile-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  .tech-profile-action-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .tech-profile-action-buttons button {
+    margin: 5px 0;
+    width: 100%;
+  }
+}
