@@ -27,12 +27,6 @@ const TechnicianLogin = () => {
     password: "",
   });
 
-  const [updatePasswordFormData, setUpdatePasswordFormData] = useState({
-    emailOrMobile: "",
-    newPassword: "",
-    confirmNewPassword: "",
-  });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -131,7 +125,7 @@ const TechnicianLogin = () => {
 
                 <div className="tech-overall-btn-container">
                   <div
-                    className="tech-login-screen-btn"
+                    className="tech-login-new-pwd-btn"
                     onClick={() => setOpenUpdatePassword(true)}
                   >
                     Set New Password

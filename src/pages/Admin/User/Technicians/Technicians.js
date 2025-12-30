@@ -212,7 +212,7 @@ const Technicians = () => {
                         <TableCell>Email</TableCell>
                         <TableCell>Skills</TableCell>
                         <TableCell>Experience</TableCell>
-                        <TableCell>Status</TableCell>
+                        <TableCell>Specialization</TableCell>
                         <TableCell>Account Status</TableCell>
                         <TableCell>Actions</TableCell>
                       </TableRow>
@@ -250,20 +250,18 @@ const Technicians = () => {
                                 {tech.skills.join(", ") || "N/A"}
                               </TableCell>
                               <TableCell>{tech.experienceYears || 0}</TableCell>
-                              <TableCell
-                                sx={{
-                                  color:
-                                    tech.status === "Active" ? "green" : "red",
-                                }}
-                              >
-                                {tech.status}
-                              </TableCell>
                               <TableCell>
+                                {tech.specialization.join(", ") || "N/A"}
+                              </TableCell>
+                              <TableCell sx={{
+                                color:
+                                  tech.verifiedByAdmin ? "green" : "red",
+                              }}>
                                 {tech.verifiedByAdmin ? "Approved" : "Pending"}
                               </TableCell>
                               <TableCell>
                                 <div
-                                  className="admin-tech-approve-btn"
+                                  className={tech.verifiedByAdmin ? "admin-tech-approved-btn" : "admin-tech-approve-btn"}
                                   onClick={() =>  !tech.verifiedByAdmin && (handleSubmit(tech._id))}
                                 >
                                   {tech.verifiedByAdmin
@@ -357,7 +355,7 @@ const Technicians = () => {
                       <TableRow>
                         <TableCell>Tech ID</TableCell>
                         <TableCell>Organization Name</TableCell>
-                        <TableCell>Owner</TableCell>
+                        <TableCell>Owner Name</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Mobile</TableCell>
                         <TableCell>Office Address</TableCell>
@@ -407,12 +405,15 @@ const Technicians = () => {
                             >
                               {tech.status}
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{
+                                color:
+                                  tech.verifiedByAdmin ? "green" : "red",
+                              }}>
                               {tech.verifiedByAdmin ? "Approved" : "Pending"}
                             </TableCell>
                             <TableCell>
                               <div
-                                className="admin-tech-approve-btn"
+                                className={tech.verifiedByAdmin ? "admin-tech-approved-btn" : "admin-tech-approve-btn"}
                                 onClick={() => handleSubmit(tech._id)}
                               >
                                 {tech.verifiedByAdmin ? "Approved" : "Approve"}

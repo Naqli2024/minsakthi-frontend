@@ -5,6 +5,7 @@ import HomeCard from "../../components/HomeCard/HomeCard";
 
 const HomePage = () => {
   const location = useLocation();
+
   return (
     <div>
       <div className="home-overall-content">

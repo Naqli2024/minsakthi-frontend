@@ -26,6 +26,18 @@ export const getTechnicianById = createAsyncThunk(
   }
 );
 
+export const updateTechnician = createAsyncThunk(
+  "updateTechnician",
+  async ({id,payload}, { rejectWithValue }) => {
+    try {
+      const response = await TechnicianService.put(`technician/${id}/update`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
 export const approveTechnician = createAsyncThunk(
   "approveTechnician",
   async (payload, { rejectWithValue }) => {
@@ -60,7 +72,7 @@ const TechnicianSlice = createSlice({
       state.technician = null;
       state.error = action.payload;
     };
-    [getAllTechnician,getTechnicianById,approveTechnician].forEach((action) => {
+    [getAllTechnician,getTechnicianById,approveTechnician,updateTechnician].forEach((action) => {
       builder
         .addCase(action.pending, handlePending)
         .addCase(action.fulfilled, handleFullFilled)

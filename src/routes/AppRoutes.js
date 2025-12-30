@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import HomePage from "../pages/Auth/HomePage";
 import Login from "../pages/Auth/Login";
 import Signup from "../pages/Auth/Signup";
@@ -43,6 +43,7 @@ import ServiceSOP from "../pages/Admin/Services/ServiceSOP/ServiceSOP";
 import ServiceBOM from "../pages/Admin/Services/ServiceBOM/ServiceBOM";
 import Schedule from "../pages/Admin/Services/Schedule/Schedule";
 import TechEditProfile from "../pages/Technician/EditProfile/TechEditProfile";
+import ViewBill from "../pages/User/Bookings/ViewBill";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -55,29 +56,37 @@ const AppRoutes = () => {
     "/reset-password",
     "/technician",
     "/technician/sign-up",
-    "/technician/login"
+    "/technician/login",
   ];
+  const hideHeaderRoutes = ["/user/bill/:orderId","/user/bill/:orderId/edit"];
+
+  const hideHeader = hideHeaderRoutes.some((route) =>
+    matchPath({ path: route, end: true }, location.pathname)
+  );
+
   const showPublicHeader = publicPaths.includes(location.pathname);
   const showAdminHeader = location.pathname.startsWith("/admin");
   const showTechnicianHeader = location.pathname.startsWith("/technician");
   return (
     <>
-      {showPublicHeader ? (
-        <Header />
-      ) : showAdminHeader ? (
-        <AdminHeader />
-      ) : showTechnicianHeader ? (
-        <TechnicianHeader />
-      ) : (
-        <UserHeader/>
-      )}
+      {!hideHeader &&
+        (showPublicHeader ? (
+          <Header />
+        ) : showAdminHeader ? (
+          <AdminHeader />
+        ) : showTechnicianHeader ? (
+          <TechnicianHeader />
+        ) : (
+          <UserHeader />
+        ))}
+
       <Routes>
         {/* Public Routes */}
         <Route
           path="/"
           element={
             <PublicRoutes>
-              <HomePage/>
+              <HomePage />
             </PublicRoutes>
           }
         />
@@ -108,7 +117,7 @@ const AppRoutes = () => {
         <Route
           path="/forgot-password"
           element={
-            <PublicRoutes >
+            <PublicRoutes>
               <ForgotPassword />
             </PublicRoutes>
           }
@@ -130,45 +139,61 @@ const AppRoutes = () => {
           }
         />
         <Route
-            path="/admin/home"
-            element={
-              <ProtectedRoutes adminOnly>
-                <AdminHome />
-              </ProtectedRoutes>
-            }
-          />
+          path="/admin/home"
+          element={
+            <ProtectedRoutes adminOnly>
+              <AdminHome />
+            </ProtectedRoutes>
+          }
+        />
         <Route
-            path="/technician"
-            element={
-              <PublicRoutes>
-                <TechnicianHome />
-              </PublicRoutes>
-            }
-          />
+          path="/technician"
+          element={
+            <PublicRoutes>
+              <TechnicianHome />
+            </PublicRoutes>
+          }
+        />
         <Route
-            path="/technician/sign-up"
-            element={
-              <PublicRoutes>
-                <SignUpStepper />
-              </PublicRoutes>
-            }
-          />
+          path="/technician/sign-up"
+          element={
+            <PublicRoutes>
+              <SignUpStepper />
+            </PublicRoutes>
+          }
+        />
         <Route
-            path="/technician/login"
-            element={
-              <PublicRoutes>
-                <TechnicianLogin />
-              </PublicRoutes>
-            }
-          />
+          path="/technician/login"
+          element={
+            <PublicRoutes>
+              <TechnicianLogin />
+            </PublicRoutes>
+          }
+        />
         <Route
-            path="/technician/update-password"
-            element={
-              <PublicRoutes>
-                <UpdatePassword />
-              </PublicRoutes>
-            }
-          />
+          path="/technician/update-password"
+          element={
+            <PublicRoutes>
+              <UpdatePassword />
+            </PublicRoutes>
+          }
+        />
+        <Route
+          path="/user/bill/:orderId"
+          element={
+            <ProtectedRoutes roleRequired="user">
+              <ViewBill />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/user/bill/:orderId/edit"
+          element={
+            <ProtectedRoutes roleRequired="user">
+              <ViewBill />
+            </ProtectedRoutes>
+          }
+        />
 
         {/* User Routes */}
         <Route path="/user" element={<UserMain />}>
@@ -244,7 +269,7 @@ const AppRoutes = () => {
             path="dashboard"
             element={
               <ProtectedRoutes roleRequired="admin">
-                <AdminDashboard/>
+                <AdminDashboard />
               </ProtectedRoutes>
             }
           />
@@ -283,7 +308,7 @@ const AppRoutes = () => {
           <Route
             path="service-list"
             element={
-              <ProtectedRoutes roleRequired="admin">  
+              <ProtectedRoutes roleRequired="admin">
                 <ServiceList />
               </ProtectedRoutes>
             }
@@ -305,19 +330,21 @@ const AppRoutes = () => {
             }
           />
           <Route
-           path="service-bom"
-           element={
-            <ProtectedRoutes roleRequired="admin">
-              <ServiceBOM/>
-            </ProtectedRoutes>
-           }/>
+            path="service-bom"
+            element={
+              <ProtectedRoutes roleRequired="admin">
+                <ServiceBOM />
+              </ProtectedRoutes>
+            }
+          />
           <Route
-           path="schedule"
-           element={
-            <ProtectedRoutes roleRequired="admin">
-              <Schedule/>
-            </ProtectedRoutes>
-           }/>
+            path="schedule"
+            element={
+              <ProtectedRoutes roleRequired="admin">
+                <Schedule />
+              </ProtectedRoutes>
+            }
+          />
         </Route>
 
         {/* Technician Routes */}
@@ -362,7 +389,7 @@ const AppRoutes = () => {
               </ProtectedRoutes>
             }
           />
-          </Route>
+        </Route>
       </Routes>
     </>
   );

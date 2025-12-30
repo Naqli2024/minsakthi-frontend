@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { RiProgress8Line } from "react-icons/ri";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { FaHornbill } from "react-icons/fa6";
 import {
   Form,
   FormControl,
@@ -19,7 +20,8 @@ import {
   FormSelect,
   Button,
 } from "react-bootstrap";
-import { scheduleVisit } from "../../../../redux/Admin/ServiceSlice";
+import { adminReview, scheduleVisit } from "../../../../redux/Admin/ServiceSlice";
+import { useNavigate } from "react-router-dom";
 
 const ViewServiceSOP = ({ backToList, orderId }) => {
   const [orderData, setOrderData] = useState([]);
@@ -27,6 +29,7 @@ const ViewServiceSOP = ({ backToList, orderId }) => {
   const [scheduleDate, setScheduleDate] = useState("");
   const [scheduleTime, setScheduleTime] = useState("");
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
 
   const handleChangeDateTime = (e) => {
     const value = e.target.value;
@@ -67,6 +70,31 @@ const ViewServiceSOP = ({ backToList, orderId }) => {
     }
   };
 
+    const handleReceivedTechReport = async () => {
+      try {
+        const payload = {};
+  
+        await dispatch(adminReview({ orderId, payload }))
+          .unwrap()
+          .then((response) => {
+            toast.success(response.message);
+            dispatch(getOrderByOrderId(orderId))
+              .unwrap()
+              .then((response) => setOrderData(response.data));
+          });
+      } catch (error) {
+        toast.error(error);
+      }
+    };
+
+ const formatDateTime = (date) => {
+  const d = new Date(date);
+  const formattedDate = d.toLocaleDateString("en-IN");
+  const formattedTime = d.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
+  return `${formattedDate} - ${formattedTime}`;
+}; 
+  
+
   return (
     <div className="admin-sop-container">
       <h1 className="admin-sop-header">
@@ -88,7 +116,7 @@ const ViewServiceSOP = ({ backToList, orderId }) => {
             const stepCompleted =
               step.subProcesses?.length > 0
                 ? step.subProcesses.every((sub) => sub.isCompleted)
-                : step.status === "Completed";
+                : step.status === "Completed" ||step.status ===  "Arrived";
             const isLastStep = index === orderData.processes.length - 1;
 
             return (
@@ -144,15 +172,8 @@ const ViewServiceSOP = ({ backToList, orderId }) => {
                             <RiProgress8Line />
                           )}
                         </div>
-                        <Typography className="admin-sop-sub-title">
-                          {sub.name}{" "}
-                          {sub.name === "Schedule Visit" && sub.isCompleted && (
-                            <span className="fw-normal">
-                              ( {sub.scheduledDate}
-                              {" - "}
-                              {sub.scheduledTime})
-                            </span>
-                          )}
+                        <Typography>
+                         {sub.name}{" "}{sub.completedAt && `[${formatDateTime(sub.completedAt)}]`}
                         </Typography>
                         <Typography className="admin-sop-sub-desc">
                           {sub.subProcessDescription}
@@ -182,6 +203,19 @@ const ViewServiceSOP = ({ backToList, orderId }) => {
                                 </InputGroup.Text>
                               </InputGroup>
                             </FormGroup>
+                          </div>
+                        )}
+                        {sub.name === "BOM Preparation" && !sub.isCompleted && (
+                          <div className="admin-sop-generate-bom-btn"
+                          onClick={()=>navigateTo("/admin/service-bom")}>
+                            <FaHornbill size={18}/>Generate BOM
+                          </div>
+                        )}
+                        {sub.name === "Receive Technician Report" && !sub.isCompleted  && (
+                          <div className="d-flex align-items-center mt-2">
+                            Received Technician Report? 
+                            <span className="initial-obs-yes-btn" onClick={()=> handleReceivedTechReport()}>Yes</span>
+                            <span className="initial-obs-no-btn">No</span>
                           </div>
                         )}
                       </div>

@@ -22,6 +22,8 @@ const ServiceProcess = () => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [orderId, setOrderId] = useState();
+  const [editOrderId, setEditOrderId] = useState();
+  const [isEditOrder, setIsEditOrder] = useState(false);
 
   useEffect(() => {
     dispatch(getAllOrders())
@@ -51,12 +53,19 @@ const ServiceProcess = () => {
   const handleOpenProcessDetail = (order) => {
     setOrderId(order.orderId);
     setOpenViewServiceProcessDetail(true)
+    setIsEditOrder(false)
+  }
+
+  const handleEditProcessDetail = (order) => {
+    setEditOrderId(order.orderId);
+    setOpenNewProcess(true)
+    setIsEditOrder(true)
   }
 
   return (
     <div>
       {openNewProcess ? (
-        <NewServiceProcess backToList={() => setOpenNewProcess(false)}/>
+        <NewServiceProcess backToList={() => setOpenNewProcess(false)} editOrderId={editOrderId} isEditOrder= {isEditOrder}/>
       ) : openViewServiceProcessDetail
       ? (<ViewServiceProcessDetails backToList={() => setOpenViewServiceProcessDetail(false)}
          orderId={orderId}/>)
@@ -110,7 +119,10 @@ const ServiceProcess = () => {
             <div className="col-md-2">
               <button
                 className="admin-pl-new-process-btn"
-                onClick={() => setOpenNewProcess(true)}
+                onClick={() => {
+                  setOpenNewProcess(true)
+                  setIsEditOrder(false)
+                }}
               >
                 <MdAdd size={18}/> New Service Process
               </button>
@@ -184,9 +196,10 @@ const ServiceProcess = () => {
                         <TableCell>{order.issueLocation || "N/A"}</TableCell>
                         <TableCell>{order.orderStatus || "N/A"}</TableCell>
                         <TableCell>
-                          <div className="d-flex align-items-center justify-content-center gap-2">
-                            <MdModeEdit size={20} color="#2fb972" style={{ cursor: "pointer" }} />
-                            <MdDelete size={20} color="red" style={{ cursor: "pointer" }} />
+                          <div className="d-flex justify-content-center">
+                            <div className="admin-pl-edit-btn" onClick={() => handleEditProcessDetail(order)}>
+                              <MdModeEdit size={15} color="white" style={{ cursor: "pointer" }} />Edit
+                            </div>
                           </div>
                         </TableCell>
                       </TableRow>

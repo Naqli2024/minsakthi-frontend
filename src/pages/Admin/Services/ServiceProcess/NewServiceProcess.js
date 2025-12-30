@@ -28,7 +28,7 @@ import {
 } from "../../../../redux/User/BookingSlice";
 import { IoArrowBackOutline } from "react-icons/io5";
 
-const NewServiceProcess = ({ backToList }) => {
+const NewServiceProcess = ({ backToList, editOrderId, isEditOrder }) => {
   const dispatch = useDispatch();
   const [processData, setProcessData] = useState([]);
   const [extraSubProcesses, setExtraSubProcesses] = useState({});
@@ -115,10 +115,9 @@ const NewServiceProcess = ({ backToList }) => {
             .then(() => backToList())
         )
       );
-
       toast.success("Order updated successfully!");
     } catch (error) {
-      toast.error(error?.message);
+      toast.error(error);
     }
   };
 
@@ -186,6 +185,12 @@ const NewServiceProcess = ({ backToList }) => {
     }
   }, [selectedProcess, processData]);
 
+  useEffect(() => {
+    if(isEditOrder) {
+      setSelectedOrderId(editOrderId)
+    }
+  })
+
   return (
     <div>
       <div className="admin-pl-new-service-process">
@@ -196,14 +201,16 @@ const NewServiceProcess = ({ backToList }) => {
             onClick={backToList}
             className="me-2"
           />
-          New Service Process
+          {isEditOrder ? "Edit" : "New"} Service Process
         </h1>
         <div className="admin-pl-order-id">
           <FormGroup className="mb-3">
             <FormLabel className="text-muted">
               To Create New Process Select Order
             </FormLabel>
-            <InputGroup>
+            {isEditOrder
+            ? (<p>{selectedOrderId}</p>)
+            : (<InputGroup>
               <Form.Select
                 value={selectedOrderId}
                 onChange={(e) => {
@@ -212,15 +219,16 @@ const NewServiceProcess = ({ backToList }) => {
               >
                 <option value="">Select Order</option>
                 {orderId.map((data, i) => (
-                  <option key={i} value={data.orderId}>
+                  <option key={i} value={data.orderId} 
+                  disabled={data?.processes?.length > 0}
+                  >
                     {data.orderId}
                   </option>
                 ))}
               </Form.Select>
-            </InputGroup>
+            </InputGroup>)}
           </FormGroup>
         </div>
-
         {selectedOrderId && (
           <div>
             <div className="mt-4 d-flex flex-column align-items-center">
@@ -483,7 +491,7 @@ const NewServiceProcess = ({ backToList }) => {
                           <div className="d-flex flex-column ms-3">
                             <div className="d-flex align-items-center">
                               <p className="mb-1 fw-bold text-muted">
-                                {selectedOrderId}
+                                    {isEditOrder ? editOrderId : selectedOrderId}
                               </p>
                               {proc.selectedProcess && (
                                 <p className="text-muted fw-bold mx-2 mb-1">
@@ -719,7 +727,6 @@ const NewServiceProcess = ({ backToList }) => {
                   </div>
                 ))}
             </div>
-
             <div className="d-flex justify-content-center mt-3">
               <div
                 className="admin-pl-sub-process-btn"
@@ -747,7 +754,7 @@ const NewServiceProcess = ({ backToList }) => {
           Cancel
         </div>
         <div className="admin-pl-create-btn" onClick={handleSubmit}>
-          Create Service Process
+          {isEditOrder ? "Edit" : "Create"} Service Process
         </div>
       </div>
     </div>

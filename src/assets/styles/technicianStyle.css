@@ -323,7 +323,7 @@
   color: #2fb972;
   font-size: 12px !important;
   margin-left: auto;
-  margin-right: 60px;
+  margin-right: 50px;
   cursor: pointer;
 }
 .tech-login-screen-btn {
@@ -340,6 +340,21 @@
 }
 .tech-login-screen-btn:hover {
   background-color: #7dcf98;
+}
+.tech-login-new-pwd-btn{
+  color: #2fb972;
+  border: 1px solid #2fb972;
+  border-radius: 5px;
+  font-weight: 500;
+  width: 100%;
+  min-width: 100%;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.tech-login-new-pwd-btn:hover {
+  background-color: #e8f8ee;
 }
 .tech-login-flip-card {
   position: absolute;
@@ -737,7 +752,6 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  font-size: 14px;
 }
 .technician-job-view-details-btn {
   background-color: #fff;
@@ -746,6 +760,39 @@
   background-color: #05c283;
   color: white;
   border: none;
+}
+.technician-job-get-otp-btn {
+  border: 1px solid #2FB972;
+  background-color: #DBFCE7;
+  color: #2FB972;
+  width: fit-content;
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 10px !important;
+}
+.initial-obs-yes-btn {
+  background-color: #2FB972;
+  color: white;
+  width: fit-content;
+  text-align: center;
+  padding: 3px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px !important;
+  margin-left: 5px;
+}
+.initial-obs-no-btn {
+  background-color: #EF4444;
+  color: white;
+  width: fit-content;
+  text-align: center;
+  padding: 3px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px !important;
+  margin-left: 5px;
 }
 @media (max-width: 1200px) {
   .technician-job-manage-toolbar {
@@ -1023,6 +1070,15 @@
   cursor: pointer;
   border-radius: 8px;
   font-size: 12px !important;
+}
+.tech-edit-profile-empty img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid #6b7280;
+  height: 90px;
+  width: 90px;
 }
 @media (max-width: 992px) {
   .tech-profile-info-grid {

@@ -517,6 +517,16 @@
   font-size: 12px !important;
   cursor: pointer;
 }
+.admin-service-list-delete-btn {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 7px;
+  font-size: 12px !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 @media (max-width: 768px) {
   .admin-bulk-item-btn {
     margin-bottom: 10px;
@@ -1087,6 +1097,17 @@
   background: transparent !important;
   color: inherit !important;
 }
+.admin-pl-edit-btn {
+  padding: 3px 10px;
+  background-color: #2fb972;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px !important;
+}
 @media (max-width: 1200px) {
   .admin-pl-sub-process-card {
     flex-direction: column;
@@ -1181,13 +1202,22 @@
   }
 }
 /*********** Admin User-Technician List*************/
-.admin-tech-approve-btn {
+.admin-tech-approved-btn {
   background-color: #DBFCE7;
   border-radius: 15px;
-  padding: 5px 10px;
+  padding: 2px 5px;
   color: #61CB7D;
   border: 1px solid #61CB7D;
   cursor: pointer;
+  font-size: 12px !important;
+}
+.admin-tech-approve-btn {
+  background-color: #2eb972;
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px !important;
 }
 .admin-technician-profile-container {
   padding: 20px;
@@ -1430,6 +1460,19 @@
   color: #666;
   font-size: 12px !important;
 }
+.admin-sop-generate-bom-btn {
+  background-color: #2eb972;
+  color: white;
+  font-size: 12px !important;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 4px;
+  border-radius: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
 /*********** Admin Schedule *************/
 .schedule-management-overall-container {
   padding: 30px;
@@ -1546,4 +1589,75 @@
 }
 .new-schedule-modal p{
   font-size: 12px !important;
+}
+/*********** Admin BOM *************/
+.generate-bom-btn {
+  padding: 3px 0px 3px 7px;
+  background-color: #2fb972;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.admin-generate-bom-container {
+  padding: 30px;
+}
+.admin-generate-bom-container .admin-generate-bom-container-header {
+  font-size: 16px !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.admin-generate-bom-top-content {
+  border: 1px solid #D4D4D4;
+  background-color: #F9FAFB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+}
+.admin-generate-bom-scope-tag {
+  padding: 3px 7px;
+  background-color: #FFE5E5;
+  color: #F67A7A;
+  border: 1px solid #F67A7A;
+  border-radius: 12px;
+  font-size: 12px !important;
+}
+.admin-generate-bom-orderid-tag {
+  padding: 3px 7px;
+  background-color: #C5FFE1;
+  color: #159151;
+  border: 1px solid #159151;
+  border-radius: 12px;
+  font-size: 12px !important;
+  width: fit-content;
+}
+.admin-generate-bom-bottom-content {
+  border: 1px solid #D4D4D4;
+  background-color: #F9FAFB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 3px solid #2eb972;
+}
+.admin-generate-bom-item-btn {
+  padding: 3px 15px;
+  background-color: #2eb972;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.bom-label {
+  width: 250px; 
+  font-weight: 600;
 }

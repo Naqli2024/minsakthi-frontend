@@ -181,6 +181,78 @@ export const initialObservationReport = createAsyncThunk(
   }
 );
 
+export const adminReview = createAsyncThunk(
+  "adminReview",
+  async ({orderId,payload}, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.post(`/order/${orderId}/admin-review`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
+export const bomAcceptance = createAsyncThunk(
+  "bomAcceptance",
+  async ({orderId,payload}, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.post(`/order/${orderId}/bom-status`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
+export const orderExecution = createAsyncThunk(
+  "orderExecution",
+  async ({orderId,payload}, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.put(`/order/${orderId}/execution`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
+export const generateBOM = createAsyncThunk(
+  "generateBOM",
+  async ({orderId,payload}, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.post(`/order/${orderId}/generateBOM`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
+export const editBOM = createAsyncThunk(
+  "editBOM",
+  async ({orderId,payload}, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.put(`/order/${orderId}/bom/edit`,payload);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
+export const deleteBOM = createAsyncThunk(
+  "deleteBOM",
+  async (orderId, { rejectWithValue }) => {
+    try {
+      const response = await AdminService.delete(`/order/${orderId}/bom/delete`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
+
 const ServiceSlice = createSlice({
   name: "service",
   initialState: {
@@ -213,7 +285,16 @@ const ServiceSlice = createSlice({
       getProcessTemplateById,
       editProcessTemplates,
       deleteProcessTemplates,
-      assignTechnician
+      assignTechnician,
+      scheduleVisit,
+      generateArrivalOtp,
+      verifyArrivalOtp,
+      initialObservationReport,
+      adminReview,
+      bomAcceptance,
+      generateBOM,
+      editBOM,
+      deleteBOM
     ].forEach((action) => {
       builder
         .addCase(action.pending, handlePending)

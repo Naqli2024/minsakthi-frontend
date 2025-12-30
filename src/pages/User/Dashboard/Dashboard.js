@@ -16,8 +16,6 @@ import { LineChart } from "@mui/x-charts/LineChart";
 const Dashboard = () => {
   const [activeStep, setActiveStep] = useState(0);
 
- 
-
 
   const jobList = [
     {

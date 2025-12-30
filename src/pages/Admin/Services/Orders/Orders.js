@@ -511,7 +511,7 @@ const Orders = () => {
                                     data-bs-toggle="tooltip"
                                     title={process.processName}
                                   >
-                                    {process.status === "Completed" ? (
+                                    {process.status === "Completed" || process.status ===  "Arrived" ? (
                                       <IoCheckmarkCircleSharp
                                         color="#2fb972"
                                         size={"16px"}

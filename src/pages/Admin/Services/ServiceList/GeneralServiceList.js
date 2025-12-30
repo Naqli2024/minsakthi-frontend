@@ -224,21 +224,18 @@ const GeneralServiceList = ({ serviceData, setServiceData }) => {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="d-flex align-items-center justify-content-center gap-2">
-                          <MdModeEdit
-                            size={20}
-                            color="#2fb972"
-                            cursor={"Pointer"}
-                          />
-                          <MdDelete
-                            size={20}
-                            color="red"
-                            cursor={"Pointer"}
-                            onClick={() => {
+                        <div className="d-flex align-items-center justify-content-center">
+                          <div className="admin-service-list-delete-btn" 
+                          onClick={() => {
                               setServiceId(service._id);
                               setOpenConfirmDeleteDialog(true);
-                            }}
+                            }}>
+                            <MdDelete
+                            size={15}
+                            color="white"
                           />
+                          Delete
+                          </div>
                         </div>
                       </TableCell>
                     </TableRow>

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { getUserById } from "../../redux/User/UserSlice";
 import { getTechnicianById } from "../../redux/Technician/TechnicianSlice";
+import { toast } from "react-toastify";
 
 const TechnicianHeader = () => {
   const [notifications, setNotifications] = useState(3);
@@ -41,7 +42,7 @@ const TechnicianHeader = () => {
           setTechnicianData(response.data);
         })
         .catch((error) => {
-          console.error(error);
+          toast.error(error);
         });
     }, [dispatch, technicianId]);
 

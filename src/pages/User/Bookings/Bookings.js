@@ -18,12 +18,12 @@ import { IoIosEye } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
 import { MdOutlineCancel } from "react-icons/md";
 import { MdStarRate } from "react-icons/md";
-import { MdDownload } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineRefresh } from "react-icons/md";
 import TrackLocation from "./TrackLocation";
 import Drawer from "@mui/material/Drawer";
 import { MdReport } from "react-icons/md";
+import { MdOutlineEdit } from "react-icons/md";
 import {
   Dialog,
   DialogActions,
@@ -33,6 +33,7 @@ import {
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { FaMoneyBillWaveAlt } from "react-icons/fa";
 import {
   deleteOrderByOrderId,
   getAllDeletedOrder,
@@ -213,22 +214,23 @@ const Bookings = () => {
     selectedDeletedDate,
   ]);
 
-  const handleSubmit = (e) =>{
-    e.preventDefault() 
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const payload = {
       orderId,
-      rating
-    }
+      rating,
+    };
     dispatch(orderRating(payload))
-    .unwrap()
-    .then((response) =>{
-      toast.success(response.message)
-      setOpenRatingsDialog(false)
-      setRating(0)
-    }).catch((error) => {
-       toast.error(error)
-    })
-  }
+      .unwrap()
+      .then((response) => {
+        toast.success(response.message);
+        setOpenRatingsDialog(false);
+        setRating(0);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  };
 
   return (
     <div>
@@ -346,19 +348,17 @@ const Bookings = () => {
                               {selectedSort || "Sort"}
                             </Button>
                             <Menu {...bindMenu(popupState)}>
-                              {["A - Z", "Z - A"].map(
-                                (sort) => (
-                                  <MenuItem
-                                    key={sort}
-                                    onClick={() => {
-                                      setSelectedSort(sort);
-                                      popupState.close();
-                                    }}
-                                  >
-                                    {sort}
-                                  </MenuItem>
-                                )
-                              )}
+                              {["A - Z", "Z - A"].map((sort) => (
+                                <MenuItem
+                                  key={sort}
+                                  onClick={() => {
+                                    setSelectedSort(sort);
+                                    popupState.close();
+                                  }}
+                                >
+                                  {sort}
+                                </MenuItem>
+                              ))}
                             </Menu>
                           </>
                         )}
@@ -397,11 +397,30 @@ const Bookings = () => {
                 <div className="all-bookings-container">
                   {filteredOrders?.length > 0 ? (
                     filteredOrders.map((order, index) => (
-                      <div className="booking-container">
+                      <div
+                        className="booking-container"
+                        key={index}
+                        style={{
+                          border: `${
+                            order?.billOfMaterial?.bomStatus ===
+                              "Pending" && "1px solid #2fb972"
+                          }`,
+                          background: `${
+                            order?.billOfMaterial?.bomStatus ===
+                              "Pending" && "#DBFCE7"
+                          }`,
+                        }}
+                      >
                         <div className="booking-content">
-                          <div>
+                          <div className="position-relative">
                             <p className="booking-id">
                               Order ID: {order.orderId}
+                              {order?.billOfMaterial && (
+                                <span className="ms-4 service-price-tag py-1">
+                                  {"  "}&#8377;
+                                  {order?.billOfMaterial.totalPayable}
+                                </span>
+                              )}
                             </p>
                             <p className="booking-address mt-3">
                               {order.serviceName}
@@ -441,22 +460,53 @@ const Bookings = () => {
                                 <MdOutlineCancel />
                                 Cancel booking
                               </button>
+                              {order?.orderStatus ===
+                                    "Completed" && (
                               <button
                                 className="btn rate"
                                 onClick={() => {
-                                  setOpenRatingsDialog(true); 
-                                  setOrderId(order.orderId)}}
+                                  setOpenRatingsDialog(true);
+                                  setOrderId(order.orderId);
+                                }}
                               >
                                 <MdStarRate />
                                 Rate Our Service
-                              </button>
-                              <button className="btn invoice">
-                                <MdDownload />
-                                Download Invoice
-                              </button>
+                              </button>)}
+                              {order?.billOfMaterial && (
+                                <div className="position-relative">
+                                  {order?.billOfMaterial?.bomStatus ===
+                                    "Pending" && (
+                                    <div className="bill-notify-indicator" />
+                                  )}
+                                  <div
+                                    className="btn bill"
+                                    onClick={() =>
+                                      navigateTo(
+                                        `/user/bill/${order.orderId}`
+                                      )
+                                    }
+                                  >
+                                    <FaMoneyBillWaveAlt />
+                                    View Bill
+                                  </div>
+                                </div>
+                              )}
                             </div>
+                            {order?.billOfMaterial?.bomStatus != "Pending" &&
+                              order?.billOfMaterial && (
+                                <div
+                                  className={
+                                    order?.billOfMaterial?.bomStatus ===
+                                    "Approved"
+                                      ? "booking-bom-status-accept"
+                                      : "booking-bom-status-reject"
+                                  }
+                                >
+                                  {order?.billOfMaterial?.bomStatus}
+                                </div>
+                              )}
                           </div>
-                          <div>
+                          <div className="d-flex flex-column justify-content-between align-items-center">
                             <p
                               className={`${
                                 order.orderStatus === "Completed"
@@ -468,6 +518,18 @@ const Bookings = () => {
                             >
                               {order.orderStatus}
                             </p>
+                            {order?.billOfMaterial?.bomStatus != "Pending" &&
+                              order?.billOfMaterial && (
+                                <div
+                                  className="booking-edit-bom"
+                                  onClick={() =>
+                                    navigateTo(
+                                      `/user/bill/${order.orderId}/edit`)
+                                  }
+                                >
+                                  <MdOutlineEdit size={18} color="white" />
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
@@ -551,19 +613,17 @@ const Bookings = () => {
                               {selectedSort || "Sort"}
                             </Button>
                             <Menu {...bindMenu(popupState)}>
-                              {["A - Z", "Z - A"].map(
-                                (sort) => (
-                                  <MenuItem
-                                    key={sort}
-                                    onClick={() => {
-                                      setSelectedSort(sort);
-                                      popupState.close();
-                                    }}
-                                  >
-                                    {sort}
-                                  </MenuItem>
-                                )
-                              )}
+                              {["A - Z", "Z - A"].map((sort) => (
+                                <MenuItem
+                                  key={sort}
+                                  onClick={() => {
+                                    setSelectedSort(sort);
+                                    popupState.close();
+                                  }}
+                                >
+                                  {sort}
+                                </MenuItem>
+                              ))}
                             </Menu>
                           </>
                         )}
@@ -717,19 +777,17 @@ const Bookings = () => {
                               {selectedDeletedSort || "Sort"}
                             </Button>
                             <Menu {...bindMenu(popupState)}>
-                              {["A - Z", "Z - A"].map(
-                                (sort) => (
-                                  <MenuItem
-                                    key={sort}
-                                    onClick={() => {
-                                      setSelectedDeletedSort(sort);
-                                      popupState.close();
-                                    }}
-                                  >
-                                    {sort}
-                                  </MenuItem>
-                                )
-                              )}
+                              {["A - Z", "Z - A"].map((sort) => (
+                                <MenuItem
+                                  key={sort}
+                                  onClick={() => {
+                                    setSelectedDeletedSort(sort);
+                                    popupState.close();
+                                  }}
+                                >
+                                  {sort}
+                                </MenuItem>
+                              ))}
                             </Menu>
                           </>
                         )}
@@ -800,9 +858,7 @@ const Bookings = () => {
                             </div>
                           </div>
                           <div>
-                            <p className="cancelled-status">
-                              Cancelled
-                            </p>
+                            <p className="cancelled-status">Cancelled</p>
                           </div>
                         </div>
                       </div>
@@ -948,7 +1004,10 @@ const Bookings = () => {
           <div className="booking-view-details">
             <div className="d-flex justify-content-between align-items-center">
               <h4 className="fw-bold">
-                Order ID: {viewOrderData?.orderId || viewOrderData?.originalOrderId  || "N/A"}
+                Order ID:{" "}
+                {viewOrderData?.orderId ||
+                  viewOrderData?.originalOrderId ||
+                  "N/A"}
               </h4>
               <div
                 className="report-btn"
