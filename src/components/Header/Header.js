@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
+import { useTranslation } from "react-i18next";
+import { changeLanguage } from "i18next";
 
 const Header = () => {
   const location = useLocation();
@@ -12,6 +14,8 @@ const Header = () => {
     "/login"
   ];
   const showUserActiveTextHeader = publicPaths.includes(location.pathname);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div class="top-content">
@@ -35,26 +39,33 @@ const Header = () => {
             <ul class="navbar-nav center-links fw-bold">
               <li class="nav-item">
                 <Link class={`${showUserActiveTextHeader && "active nav-link"} nav-link`} aria-current="page" to="/">
-                  User
+                  {t("user")}
                 </Link>
               </li>
               <div className="vr mt-2 mb-2 vertical-divider"></div>
               <li class="nav-item">
                 <Link class={`${location.pathname.startsWith(`/technician`) && "active nav-link"} nav-link`}  aria-current="page" to="/technician">
-                Technician
+                {t("technician")}
                 </Link>
               </li>
             </ul>
             {location.pathname === `/` && (
               <div class="d-flex ms-auto flex-wrap align-items-center fw-bold button-group">
-                <div class="nav-item home-signup-btn">
+                <select
+                  value={i18n.language}
+                  onChange={(e) => changeLanguage(e.target.value)}
+                >
+                  <option value="en">English</option>
+                  <option value="ta">தமிழ்</option>
+                </select>
+                <div class="nav-item home-signup-btn ms-4">
                   <Link class="nav-link" to="/signup">
-                    SignUp
+                    {t("signup")}
                   </Link>
                 </div>
                 <div class="nav-item login-btn">
                   <Link class="nav-link" to="/login">
-                    Login
+                    {t("login")}
                   </Link>
                 </div>
               </div>

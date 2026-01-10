@@ -523,11 +523,11 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  min-height: 92vh;
+  overflow-y: auto;
 }
 .login-left-image {
   background-color: #f2fafa;
-  height: 100%;
-  min-height: 92vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -540,8 +540,6 @@
   object-fit: contain;
 }
 .login-right-card {
-  height: 100%;
-  min-height: 92vh;
   display: flex;
   justify-content: center;
   align-items: center;

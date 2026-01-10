@@ -6,81 +6,82 @@ import { MdOutlinePayments } from "react-icons/md";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 export const adminItems = [
   {
-    item: "Dashboard",
+    item: "dashboard",
     path: "dashboard",
     icon: <MdOutlineDashboard size={20} />,
   },
   {
-    item: "User",
+    item: "user",
     path: "user",
     icon: <LuBookUser size={20} />,
     subItem: [
       {
-        item: "Customers",
+        item: "customers",
         path: "customers",
       },
       {
-        item: "Technicians",
+        item: "technicians",
         path: "technicians",
       },
       {
-        item: "Employees",
+        item: "employees",
         path: "employees",
       },
     ],
   },
   {
-    item: "Services",
+    item: "services",
     path: "services",
     icon: <MdOutlineElectricalServices size={20} />,
     subItem: [
       {
-        item: "Orders",
+        item: "orders",
         path: "orders",
       },
       {
-        item: "List of Services",
+        item: "list_of_services",
         path: "service-list",
       },
       {
-        item: "Process List",
+        item: "process_list",
         path: "process-list",
       },
       {
-        item: "Service SOP",
+        item: "service_sop",
         path: "service-sop",
       },
       {
-        item: "Service BOM",
+        item: "service_bom",
         path: "service-bom",
       },
       {
-        item: "Schedule",
+        item: "schedule",
         path: "schedule",
       },
     ],
   },
   {
-    item: "Payment & Transactions",
+    item: "payment_transactions",
     path: "payment-transactions",
     icon: <MdOutlinePayments size={20} />,
   },
   {
-    item: "Reports",
+    item: "reports",
     path: "reports",
     icon: <MdOutlineReportGmailerrorred size={20} />,
   },
   {
-    item: "Support Tickets",
+    item: "support_tickets",
     path: "support-tickets",
     icon: <MdOutlineContactSupport size={20} />,
   },
-  { item: "Settings", path: "settings", icon: <IoSettingsOutline size={20} /> },
+  { item: "settings", path: "settings", icon: <IoSettingsOutline size={20} /> },
   {
-    item: "Help & Support",
+    item: "help_support",
     path: "help-support",
     icon: <IoMdHelpCircleOutline size={20} />,
   },

@@ -4,27 +4,30 @@ import { IoTrendingUp } from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import TechLanding from "../../../assets/images/tech-landing.svg";
+import { useTranslation, Trans } from "react-i18next";
 
 const TechnicianHome = () => {
+  const { t } = useTranslation();
   const navigateTo = useNavigate();
+
   const partnerWithUs = [
     {
       image: CiCalendar,
-      topic: "Regular Service Request",
+      topic: "regular_service",
       description:
-        "Get daily job assignments directly to your device and keep your schedule full",
+        "regular_service_desc",
     },
     {
       image: IoTrendingUp,
-      topic: "Better Earnings",
+      topic: "better_earnings",
       description:
-        "Benefit from our platform's reach and earn more with repeat, satisfied customers.",
+        "better_earnings_desc",
     },
     {
       image: MdOutlinePayments,
-      topic: "On - Time Payments",
+      topic: "on_time_payments",
       description:
-        "Receive your payment instantly and securely right after the job is completed.",
+        "on_time_payments_desc",
     },
   ];
 
@@ -33,21 +36,25 @@ const TechnicianHome = () => {
       <div className="tech-top-content">
         <div className="col-12 col-md-6 tech-left-content d-flex flex-column gap-3">
           <h1>
-            Partner With <span>Minsakthi24h</span>
+            <Trans i18nKey="partner_title">
+              Partner With <span>Minsakthi24h</span>
+            </Trans>{" "}
           </h1>
           <p>
-            Grow your income by providing quality home &<br />
-            industrial services.
+            {t("partner_subtitle")}
           </p>
           <div className="d-flex flex-column flex-sm-row gap-3">
             <p
               className="tech-signup-btn"
               onClick={() => navigateTo("/technician/sign-up")}
             >
-              Sign up
+              {t("signup")}
             </p>
-            <p className="tech-login-btn" onClick={() => navigateTo("/technician/login")}>
-              Login
+            <p
+              className="tech-login-btn"
+              onClick={() => navigateTo("/technician/login")}
+            >
+              {t("login")}
             </p>
           </div>
         </div>
@@ -55,15 +62,15 @@ const TechnicianHome = () => {
           <img src={TechLanding} />
         </div>
       </div>
-      <div className="tech-partner-with-us-text">Why Partner With Us?</div>
+      <div className="tech-partner-with-us-text">{t("why_partner")}</div>
       <div className="tech-bottom-content">
         {partnerWithUs.map((item, index) => (
           <div className="tech-bottom-card" key={index}>
             <div className="tech-box-icon mb-3">
               <item.image size={25} color="#2fb972" />
             </div>
-            <h5 className="mt-2">{item.topic}</h5>
-            <p>{item.description}</p>
+            <h3 className="mt-2 fw-bold">{t(item.topic)}</h3>
+            <p>{t(item.description)}</p>
           </div>
         ))}
       </div>

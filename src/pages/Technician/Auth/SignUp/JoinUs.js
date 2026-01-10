@@ -1,5 +1,6 @@
 import { Form, Row, Col, InputGroup } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
 const JoinUs = ({
   formData,
@@ -11,6 +12,7 @@ const JoinUs = ({
   const [isIndividual, setIsIndividual] = useState(
     formData.technicianType === "Individual"
   );
+  const { t } = useTranslation();
 
   useEffect(() => {
     setFormData(isIndividual ? individualForm : organizationForm);
@@ -57,7 +59,7 @@ const JoinUs = ({
             <span
               className={`service-scope-label ${isIndividual ? "active" : ""}`}
             >
-              Individual
+              {t("individual")}
             </span>
             <label className="switch">
               <input
@@ -70,7 +72,7 @@ const JoinUs = ({
             <span
               className={`service-scope-label ${!isIndividual ? "active" : ""}`}
             >
-              Organisation
+              {t("organisation")}
             </span>
           </div>
         </div>
@@ -78,7 +80,7 @@ const JoinUs = ({
           <div>
             <Row className="g-4 mb-4">
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">First Name</Form.Label>
+                <Form.Label className="fw-bold">{t("first_name")}</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="text"
@@ -89,7 +91,7 @@ const JoinUs = ({
                 </InputGroup>
               </Form.Group>
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">Last Name</Form.Label>
+                <Form.Label className="fw-bold">{t("last_name")}</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="text"
@@ -102,7 +104,7 @@ const JoinUs = ({
             </Row>
             <Row className="g-4 mb-4">
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">Mobile Number</Form.Label>
+                <Form.Label className="fw-bold">{t("mobile_number")}</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="number"
@@ -113,7 +115,7 @@ const JoinUs = ({
                 </InputGroup>
               </Form.Group>
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">Email</Form.Label>
+                <Form.Label className="fw-bold">{t("email")}</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="email"
@@ -126,22 +128,22 @@ const JoinUs = ({
             </Row>
             <Row className="g-4">
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">Gender</Form.Label>
+                <Form.Label className="fw-bold">{t("gender")}</Form.Label>
                 <InputGroup>
                   <Form.Select
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
                   >
-                    <option value="">Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="">{t("select_gender")}</option>
+                    <option value="Male">{t("male")}</option>
+                    <option value="Female">{t("female")}</option>
                   </Form.Select>
                 </InputGroup>
               </Form.Group>
 
               <Form.Group as={Col} md={6} sm={12} xs={12}>
-                <Form.Label className="fw-bold">Date Of Birth</Form.Label>
+                <Form.Label className="fw-bold">{t("date_of_birth")}</Form.Label>
                 <InputGroup>
                   <Form.Control
                     type="date"

@@ -1,6 +1,9 @@
 import { Form, Row, Col, InputGroup, FormControl } from "react-bootstrap";
+import { useTranslation, Trans } from "react-i18next";
 
 const PersonalDetails = ({ formData, setFormData, technicianType }) => {
+  const { t } = useTranslation();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -48,7 +51,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
         <Form className="px-5 py-3">
           <Row className="g-4 mb-5">
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Id Proof Document</Form.Label>
+              <Form.Label className="fw-bold">{t("id_proof_document")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="file"
@@ -58,7 +61,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">License File</Form.Label>
+              <Form.Label className="fw-bold">{t("license_file")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="file"
@@ -68,7 +71,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Certifications</Form.Label>
+              <Form.Label className="fw-bold">{t("certifications")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="file"
@@ -80,7 +83,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
           </Row>
           <Row className="g-4 mb-5">
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Profile Photo</Form.Label>
+              <Form.Label className="fw-bold">{t("profile_photo")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="file"
@@ -90,7 +93,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Street</Form.Label>
+              <Form.Label className="fw-bold">{t("street")}</Form.Label>
               <InputGroup>
                 <FormControl
                   type="text"
@@ -101,7 +104,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">City</Form.Label>
+              <Form.Label className="fw-bold">{t("city")}</Form.Label>
               <InputGroup>
                 <FormControl
                   type="text"
@@ -114,7 +117,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
           </Row>
           <Row className="g-4 mb-3">
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Region</Form.Label>
+              <Form.Label className="fw-bold">{t("region")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="text"
@@ -125,7 +128,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Country</Form.Label>
+              <Form.Label className="fw-bold">{t("country")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="text"
@@ -136,7 +139,7 @@ const PersonalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Pincode</Form.Label>
+              <Form.Label className="fw-bold">{t("pincode")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="number"

@@ -14,6 +14,7 @@ import { adminItems } from "../../../helpers/AdminSideBarData";
 import MinSakthi from "../../../assets/images/minsakthi-sidebar.svg";
 import MSLogo from "../../../assets/images/minsakthi-ms.svg";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const AdminMain = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const AdminMain = () => {
   const [openMenus, setOpenMenus] = useState({});
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleCollapse = () => setIsCollapsed(!isCollapsed);
+  const { t } = useTranslation();
 
   const handleDropdownToggle = (itemPath) => {
     setOpenMenus((prev) => {
@@ -78,7 +80,7 @@ const AdminMain = () => {
                 className="edit-profile-text"
                 onClick={() => navigateTo("/admin/edit-profile")}
               >
-                Edit Profile
+                {t("edit_profile")}
               </h2>
             </div>
           )}
@@ -133,7 +135,7 @@ const AdminMain = () => {
                     >
                       <span className="me-2">{item.icon}</span>
                       {!isCollapsed && (
-                        <span className="sidebar-text">{item.item}</span>
+                        <span className="sidebar-text">{t(item.item)}</span>
                       )}
                     </div>
 
@@ -160,7 +162,7 @@ const AdminMain = () => {
                           }`}
                           onClick={() => navigateTo(`/admin/${sub.path}`)}
                         >
-                          {sub.item}
+                          {t(sub.item)}
                         </li>
                       ))}
                     </ul>

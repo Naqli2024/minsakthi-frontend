@@ -26,11 +26,13 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { AxiosError } from "axios";
 import OTPVerification from "./OTPVerification";
+import { useTranslation, Trans } from "react-i18next";
 
 const SignUpStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -82,11 +84,11 @@ const SignUpStepper = () => {
   }
 
   const steps = [
-    "Join Us",
-    "Personal Details",
-    "Professional Details",
-    "Bank Details",
-    "OTP Verification",
+    "join_us",
+    "personal_details",
+    "professional_details",
+    "bank_details",
+    "otp_verification",
   ];
 
   const organizationSteps = [
@@ -349,7 +351,7 @@ const SignUpStepper = () => {
                 {steps.map((label) => (
                   <Step key={label}>
                     <StepLabel StepIconComponent={ColorlibStepIcon}>
-                      {label}
+                      {t(label)}
                     </StepLabel>
                   </Step>
                 ))}
@@ -375,7 +377,7 @@ const SignUpStepper = () => {
             {activeStep === 3 && (
               <div className="d-flex justify-content-center">
                 <div className="tech-signup-btns" onClick={handleSubmit}>
-                  Create Account
+                  {t("create_account")}
                 </div>
               </div>
             )}

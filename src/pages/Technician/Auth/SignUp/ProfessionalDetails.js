@@ -6,10 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import { FaCirclePlus } from "react-icons/fa6";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { FiMinusCircle } from "react-icons/fi";
+import { useTranslation, Trans } from "react-i18next";
 
 const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
-  const specializations = ["Electrical", "Ac Service"];
-  const skills = ["Wiring", "Motor Repair"];
+  const specializations = ["electrical", "ac_service"];
+  const skills = ["wiring", "motor_repair"];
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -122,7 +124,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
         <Form className="px-5 py-3">
           <Row className="g-4 mb-4">
             <div className="col-12 col-md-4">
-              <Form.Label className="fw-bold">Specialization</Form.Label>
+              <Form.Label className="fw-bold">{t("specialization")}</Form.Label>
               <FormControl fullWidth>
                 <Select
                   multiple
@@ -157,7 +159,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                   }
                   renderValue={(selected) =>
                     selected.length === 0 ? (
-                      <em>Select Specialization</em>
+                      <em>{t("select_specialization")}</em>
                     ) : (
                       selected.join(", ")
                     )
@@ -169,18 +171,18 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                   }}
                 >
                   <MenuItem disabled value="">
-                    <em>Select Specialization</em>
+                    <em>{t("select_specialization")}</em>
                   </MenuItem>
                   {specializations.map((name) => (
                     <MenuItem key={name} value={name}>
-                      {name}
+                      {t(name)}
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
             </div>
             <div className="col-12 col-md-4">
-              <Form.Label className="fw-bold">Skills</Form.Label>
+              <Form.Label className="fw-bold">{t("skills")}</Form.Label>
               <FormControl fullWidth>
                 <Select
                   multiple
@@ -215,7 +217,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                   }
                   renderValue={(selected) =>
                     selected.length === 0 ? (
-                      <em>Select Skills</em>
+                      <em>{t("select_skills")}</em>
                     ) : (
                       selected.join(", ")
                     )
@@ -227,18 +229,18 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                   }}
                 >
                   <MenuItem disabled value="">
-                    <em>Select Skills</em>
+                    <em>{t("select_skills")}</em>
                   </MenuItem>
                   {skills.map((name) => (
                     <MenuItem key={name} value={name}>
-                      {name}
+                      {t(name)}
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
             </div>
             <Form.Group as={Col} md={4} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Experience (Years)</Form.Label>
+              <Form.Label className="fw-bold">{t("experience_years")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="number"
@@ -253,7 +255,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
             className="mb-2 fw-bold d-flex align-items-center"
             style={{ cursor: "pointer" }}
           >
-            Certifications Details
+            {t("certification_details")}
             <span
               onClick={() =>
                 setFormData((prev) => ({
@@ -279,7 +281,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
               <Row className="g-4 mb-2">
                 <Form.Group as={Col} md={4} sm={12}>
                   <Form.Label className="fw-bold">
-                    Certification Name
+                    {t("certification_name")}
                   </Form.Label>
                   <InputGroup>
                     <Form.Control
@@ -292,7 +294,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                 </Form.Group>
 
                 <Form.Group as={Col} md={4} sm={12}>
-                  <Form.Label className="fw-bold">Issued By</Form.Label>
+                  <Form.Label className="fw-bold">{t("certification_issued_by")}</Form.Label>
                   <InputGroup>
                     <Form.Control
                       type="text"
@@ -303,7 +305,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
                   </InputGroup>
                 </Form.Group>
                 <Form.Group as={Col} md={4} sm={12}>
-                  <Form.Label className="fw-bold">Issue Date</Form.Label>
+                  <Form.Label className="fw-bold">{t("certification_issue_date")}</Form.Label>
                   <InputGroup>
                     <Form.Control
                       type="date"
@@ -331,10 +333,10 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
             </div>
           ))}
 
-          <p className="mb-2 fw-bold">License Details</p>
+          <p className="mb-2 fw-bold">{t("license_details")}</p>
           <Row className="g-4 mb-4">
             <Form.Group as={Col} md={3} sm={12} xs={12}>
-              <Form.Label className="fw-bold">License Number</Form.Label>
+              <Form.Label className="fw-bold">{t("license_number")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="text"
@@ -345,7 +347,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={3} sm={12} xs={12}>
-              <Form.Label className="fw-bold">IssuedBy</Form.Label>
+              <Form.Label className="fw-bold">{t("license_issued_by")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="text"
@@ -356,7 +358,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={3} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Issue Date</Form.Label>
+              <Form.Label className="fw-bold">{t("license_issue_date")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="date"
@@ -367,7 +369,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
               </InputGroup>
             </Form.Group>
             <Form.Group as={Col} md={3} sm={12} xs={12}>
-              <Form.Label className="fw-bold">Expiry Date</Form.Label>
+              <Form.Label className="fw-bold">{t("license_expiry_date")}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="date"
@@ -385,7 +387,7 @@ const ProfessionalDetails = ({ formData, setFormData, technicianType }) => {
             <div key={index} className="mb-4">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h5 className="fw-bold">
-                  Technician {index + 1}
+                  {t("technician")} {index + 1}
                   <FaCirclePlus
                     className="ms-2"
                     color="#2fb972"
